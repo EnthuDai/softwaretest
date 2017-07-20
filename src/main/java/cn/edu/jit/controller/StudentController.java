@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 /**
+ *
  * Created by dxy on 2017/7/11.
  */
 @Controller
@@ -20,9 +21,8 @@ public class StudentController {
     @Resource(name = "studentServiceImpl")
     StudentService studentService;
 
-    @RequestMapping(name = "studentLogin.do")
-    @ResponseBody
-    public ExtSimpleResponse studentLogin(String id , String password, HttpSession session){
+    @RequestMapping("student/login.do")
+    public @ResponseBody ExtSimpleResponse studentLogin(String id , String password, HttpSession session){
         Student student = studentService.checkStudentLogin(id,password);
         if(student != null) {
             session.setAttribute("student", student);
@@ -32,4 +32,13 @@ public class StudentController {
         }
     }
 
+    @RequestMapping("student/logout.do")
+    public @ResponseBody ExtSimpleResponse studentLogout(HttpSession session){
+        try {
+            session.removeAttribute("student");
+            return new ExtSimpleResponse(true);
+        }catch (Exception e){
+            return new ExtSimpleResponse(false);
+        }
+    }
 }

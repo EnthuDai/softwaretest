@@ -9,7 +9,7 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-      /WEB-INF/classes/applicationContext.xml,
+      classpath:applicationContext.xml
       <!-- /WEB-INF/classes/mvc-servlet.xml -->
     </param-value>
   </context-param>
@@ -80,22 +80,24 @@
 
   <!-- 配置springmvc的前端控制器 -->
   <servlet>
-    <servlet-name>mvc</servlet-name>
+    <servlet-name>spring-mvc</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring-mvc.xml</param-value>
-    </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>mvc</servlet-name>
-    <url-pattern>/</url-pattern>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.jpg</url-pattern>
   </servlet-mapping>
-
-  <!-- 配置静态资源 -->
   <servlet-mapping>
     <servlet-name>default</servlet-name>
-    <url-pattern>/static/*</url-pattern>
+    <url-pattern>*.js</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.css</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>spring-mvc</servlet-name>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
   <welcome-file-list>
