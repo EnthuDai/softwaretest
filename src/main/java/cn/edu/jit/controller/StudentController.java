@@ -41,4 +41,13 @@ public class StudentController {
             return new ExtSimpleResponse(false);
         }
     }
+
+    @RequestMapping("student/isLogin.do")
+    public @ResponseBody String isLogin(HttpSession session){
+        Object stu =  session.getAttribute("student");
+        if(stu==null)
+            return null;
+        else
+            return ((Student)stu).getId();
+    }
 }

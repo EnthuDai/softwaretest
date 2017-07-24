@@ -13,12 +13,14 @@ public class AnalyseDate {
     public static final String CF = "重复的有等价类";
     public static final String CW = "格式错误";
     public static final String FG = "覆盖到的种类";
+    public static final String RQTS_DATE = "学生提交的有效测试用例";
+    public static final int ALL = 17; //等价类的总数
 
 
 
     String data; //以分号分隔，yyyy-MM-dd的数据字符串，如2012-1-1;2013-1-1
     List<String> errorList = new ArrayList<>();  //格式错误的日期数据
-    List<RqtsSubmission> dateList = new ArrayList<>();  //此中数据为格式逻辑都正确的数据
+    List<RqtsSubmission> dateList = new ArrayList<>();  //此中数据为格式正确的数据
     List<RqtsSubmission> resultList = new ArrayList<>(); //日期向后推算两天的数据
     List<RqtsSubmission> badList = new ArrayList<>();  //无效等价类
     int flag[] = new int[17];
@@ -33,6 +35,7 @@ public class AnalyseDate {
         map.put(CF,dateList.size()-count);
         map.put(CW,errorList.size());
         map.put(FG,count);
+        map.put(RQTS_DATE, dateList);
         return map;
     }
 
