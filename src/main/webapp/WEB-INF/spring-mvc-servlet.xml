@@ -16,7 +16,7 @@
     <context:annotation-config/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
-            <value>/WEB-INF/pages/</value>
+            <value>/</value>
         </property>
         <property name="suffix">
             <value>.jsp</value>
@@ -48,6 +48,4 @@
             </list>
         </property>
     </bean>
-
-
 </beans>

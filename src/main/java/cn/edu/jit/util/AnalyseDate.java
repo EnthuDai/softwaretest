@@ -8,12 +8,35 @@ import java.util.Map;
 
 public class AnalyseDate {
 
-    public static final String WX = "无效等价类";
-    public static final String YX = "有效等价类";
-    public static final String CF = "重复的有等价类";
-    public static final String CW = "格式错误";
-    public static final String FG = "覆盖到的种类";
-    public static final String RQTS_DATE = "学生提交的有效测试用例";
+    /**
+     * "无效等价类"
+     */
+    public static final String WX = "WX";
+
+    /**
+     * "有效等价类"
+     */
+    public static final String YX = "YX" ;
+
+    /**
+     * "重复的有效等价类"
+     */
+    public static final String CF = "CF";
+
+    /**
+     * "格式错误"
+     */
+    public static final String CW = "CW";
+
+    /**
+     * "覆盖到的种类"
+     */
+    public static final String FG = "FG";
+
+    /**
+     * "学生提交的有效测试用例"
+     */
+    public static final String RQTS_DATE = "RQTS_DATE";
     public static final int ALL = 17; //等价类的总数
 
 
@@ -31,8 +54,8 @@ public class AnalyseDate {
         map.put(WX, badList.size());
         map.put(YX,dateList.size());
         int count = 0;
-        for(int i = 0;i<flag.length;i++) count++;
-        map.put(CF,dateList.size()-count);
+        for(int i = 0;i<flag.length;i++) count += flag[i];
+        map.put(CF,dateList.size()-count>0 ? dateList.size()-count : 0);
         map.put(CW,errorList.size());
         map.put(FG,count);
         map.put(RQTS_DATE, dateList);

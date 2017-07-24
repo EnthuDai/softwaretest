@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,12 +24,19 @@ public class QuestionController {
 
     @RequestMapping("rqts.do")
     public @ResponseBody  Map rqts(String data, HttpSession session){
+        if(session==null||session.getAttribute("student")==null) {
+            Map map = new HashMap();
+            map.put("success",false);
+            return map;
+        }
+        Student user = (Student)session.getAttribute("student");
         Map map = questionService.rqtsAnalyse(data);
         int count = (int)map.get(AnalyseDate.FG);
-        int score = count*100/AnalyseDate.ALL;
-        Student user = (Student)session.getAttribute("student");
+        float score = count*100/(float)AnalyseDate.ALL;
         System.out.println(user.getId());
-        questionService.rqtsSave((List<RqtsSubmission>) map.get(AnalyseDate.RQTS_DATE),user.getId(),score);
+        questionService.rqtsSave((List<RqtsSubmission>) map.get(AnalyseDate.RQTS_DATE),user.getId(),(int)score);
+        map.put("score",(int)score);
+        map.put("success",true);
         return map;
     }
 }
