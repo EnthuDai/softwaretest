@@ -8,7 +8,6 @@ Ext.define('SoftwareTest.view.student.LoginStatusController', {
 
     logout:function(){
         Ext.Msg.confirm('提示','确定注销当前用户？',function(b){
-            console.log(b);
             if(b=='yes'){
                 Ext.Ajax.request({
                     url:SoftwareTest.server+'student/logout.do',

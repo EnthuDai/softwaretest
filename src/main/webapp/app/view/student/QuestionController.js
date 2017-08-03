@@ -15,9 +15,12 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
             minWidth: 400
         });
     },
+    rqts_reset:function(){
+        Ext.getCmp('rqtsAnswer').setValue('');
+    },
 
     rqtsSubmit:function(){
-        if(!localStorage.isLogin){
+        if(!localStorage||localStorage.isLogin=='false'){
             this.showResultText('尚未登录，请先登录');
             Ext.create('SoftwareTest.view.student.LoginWindow').show();
         }else{
@@ -25,7 +28,7 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
             if(cmp.getValue()&&cmp.isValid()) {
                 var predata = localStorage.getItem('preRqts');
                 if (predata == cmp.getValue()) {
-                    this.showResultText('请勿重复提交');
+                    this.showResultText('当前答案与上次提交重复');
                 } else {
                     localStorage.setItem('preRqts',cmp.getValue());
                     Ext.Ajax.request({
@@ -57,6 +60,12 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
                                             {text: '重复的等价类', align:'center', dataIndex: 'CF'},
                                             {text: '得分', align:'center', dataIndex: 'score',flex:0.5}
                                         ]
+                                    }],
+                                    buttons: [{
+                                        text: '确定',
+                                        handler: function() {
+                                            this.up('window').close();
+                                        }
                                     }]
                                 }).show();
                             }

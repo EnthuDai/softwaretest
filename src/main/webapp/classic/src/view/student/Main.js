@@ -7,7 +7,7 @@ Ext.define('SoftwareTest.view.student.Main',{
     // controller: 'main',
     viewModel: 'student.main',
 
-    requires:[SoftwareTest.view.student.Rqts],
+    requires:['SoftwareTest.view.student.Rqts'],
 
     tabBarHeaderPosition: 1,
     titleRotation: 0,

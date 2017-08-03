@@ -1,0 +1,52 @@
+@include extjs-panel-ui(
+        $ui: 'login',
+        $ui-header-font-size: 30px,
+        $ui-header-color: #0571c1,
+        $ui-header-line-height:60px
+);
+
+@include extjs-button-large-ui(
+        $ui: 'login-register-select-button',
+        $border-width: 1px,
+        $border-color: #fff,
+        $border-color-over: #fff,
+        $border-color-focus: #fff,
+        $border-color-pressed: #fff,
+        $border-color-focus-over: #fff,
+        $border-color-focus-pressed: #fff,
+        $border-color-disabled: #fff,
+        $background-color: #fff,
+        $background-color-over: #fff,
+        $background-color-focus-pressed: #fff,
+        $color: grey,
+        $color-over: #242d33,
+        $color-focus: #242d33,
+        $color-pressed: #242d33,
+        $color-focus-over: grey,
+        $inner-border-width:0
+);
+$button-large-border-radius:3px;
+$button-medium-border-width:0px;
+$button-large-border-width:0px;
+$button-large-font-weight:600;
+
+$form-text-field-color:#000;
+$form-field-font-size: 14px;
+
+@include extjs-text-field-ui(
+        $ui:'login-form',
+        $ui-font-size: 16px,
+        $ui-height:39px,
+        $ui-font-weight: 600,
+        $ui-border-radius: 3px
+);
+$button-large-border-radius:3px;
+$button-medium-border-width:0px;
+$button-large-border-width:0px;
+$button-large-font-weight:600;
+//$button-large-font-size:16px;
+
+@include extjs-panel-ui(
+        $ui:'register_login',
+        $ui-border-width: 0px 0px 1px 0px
+);

@@ -14,8 +14,8 @@ Ext.define('SoftwareTest.view.student.Rqts',{
         type: 'student.main'
     },
     layout:{
-            type:'vbox',
-            align:'middle'
+        type:'vbox',
+        align:'center'
     },
 
     dockedItems:[{
@@ -23,16 +23,15 @@ Ext.define('SoftwareTest.view.student.Rqts',{
         dock:'top',
         id:'loginToolBar',
         layout:'fit',
-        height:50,
         width:'100%',
         padding:'0 20 0 0',
-        height:30
+        height:50
     }],
 
     items:[{
         xtype:'panel',
-        width:'80%',
-        margin:'60 0 0 0',
+        width:'90%',
+        margin:'10 0 0 0',
         // height:'100%',
         layout:{
             type:'vbox',
@@ -46,7 +45,7 @@ Ext.define('SoftwareTest.view.student.Rqts',{
             height:36,
             margin:3,
             style:{
-                fontSize:'24px',
+                fontSize:'24px'
             }
         },{
             xtype:'label',
@@ -83,17 +82,29 @@ Ext.define('SoftwareTest.view.student.Rqts',{
             height:250,
             id:'rqtsAnswer',
             emptyText:"多个用例用半角分号 ; 隔开,例如2012-1-1;2012-1-2",
-            // vtype:'rqts'
+            vtype:'rqts'
         }]
     },{
-        xtype:'button',
-        text:'提交',
-        scale:'medium',
-        handler:'rqtsSubmit',
-        layout:{
-            type:'hbox',
-            align:'center'
-        }
+        xtype:'panel',
+        width:'90%',
+        padding:'0 5 0 0',
+        layout:'hbox',
+        items:[{
+            xtype: 'tbfill'
+        }, {
+            xtype:'button',
+            text:'重置',
+            scale:'medium',
+            handler:'rqts_reset'
+        },{
+            xtype:'tbspacer',
+            width:8
+        },{
+            xtype:'button',
+            text:'提交',
+            scale:'medium',
+            handler:'rqtsSubmit'
+        }]
     }],
     listeners:{
         beforerender:'beforerender'
