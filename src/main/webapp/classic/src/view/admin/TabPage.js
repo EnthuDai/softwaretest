@@ -13,5 +13,7 @@ Ext.define('SoftwareTest.view.admin.TabPage',{
         type: 'admin-tabpage'
     },
 
-    html: 'Hello, World!!'
+    items:[{
+        html:'hell'
+    }]
 });

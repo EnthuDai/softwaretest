@@ -87,11 +87,5 @@ Ext.define('SoftwareTest.view.student.LoginStatus',{
                 mouseout:'loginMouseOut'
             }
         }
-    }],
-
-    listeners:{
-        //在渲染完毕后，动态设置qq昵称和qq头像
-        afterrender:'afterRender',
-        beforerender:'beforeRender'
-    }
+    }]
 });

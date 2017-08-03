@@ -7,8 +7,7 @@ Ext.define('SoftwareTest.view.admin.MenuTree',{
     requires: [
         'SoftwareTest.view.admin.MenuTreeController',
         'SoftwareTest.view.admin.MenuTreeModel',
-        'SoftwareTest.store.MenuTreeStore',
-        'SoftwareTest.view.admin.StudentTree'
+        'SoftwareTest.store.MenuTreeStore'
     ],
     title:'导航菜单',
     collapsible: true,
@@ -27,6 +26,27 @@ Ext.define('SoftwareTest.view.admin.MenuTree',{
         type: 'admin-menutree'
     },
     items:[{
-        xtype:'coachtree'
+        xtype:'treepanel',
+        title:'成绩管理',
+        rootVisible:false,
+        root:{
+            children:[{
+                text:'分数查看',
+                leaf:true
+            }]
+        }
+    },{
+        xtype:'treepanel',
+        title:'学生管理',
+        rootVisible:false,
+        root:{
+            children:[{
+                text:'班级管理',
+                leaf:true
+            },{
+                text:'学生管理',
+                leaf:true
+            }]
+        }
     }]
 });

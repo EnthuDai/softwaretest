@@ -8,13 +8,34 @@ Ext.define('SoftwareTest.view.admin.AdminToolbar',{
         'SoftwareTest.view.admin.AdminToolbarModel'
     ],
 
+    style: {
+        borderWidth:1,
+        borderStyle:'solid',
+        borderColor:'red'
+    },
+    padding:'1',
+    height:30,
     controller: 'admin-admintoolbar',
     viewModel: {
         type: 'admin-admintoolbar'
     },
-    items:[{
-        xtype:'label',
-        text:'系统管理员',
-        iconCls: 'fa-user'
-    }]
+    items:['用例分析系统后台管理',
+        '->',{
+            iconCls:'icon-role',
+            id:'adminName'
+        },{
+            text:'退出后台',
+            iconCls:'icon-quit',
+            handler:function(){
+                Ext.Msg.confirm('提示','确定退出？',function (b) {
+                    if(b=='yes'){
+                        sessionStorage.setItem('adminLogin',false);
+                        window.location.href='/index.html?admin';
+                    }
+                });
+            }
+    }],
+    listeners:{
+        beforeRender:'beforeRender'
+    }
 });
