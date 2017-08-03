@@ -1,7 +1,6 @@
-
 Ext.define('SoftwareTest.view.student.Rqts',{
     extend: 'Ext.panel.Panel',
-    alias:'widget.question-rqts',
+    xtype:'rqts',
 
     requires: [
         'SoftwareTest.view.student.QuestionController',

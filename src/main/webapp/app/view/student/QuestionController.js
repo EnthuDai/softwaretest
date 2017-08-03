@@ -20,17 +20,17 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
     },
 
     rqtsSubmit:function(){
-        if(!localStorage||localStorage.isLogin=='false'){
+        if(!sessionStorage||sessionStorage.isLogin=='false'){
             this.showResultText('尚未登录，请先登录');
             Ext.create('SoftwareTest.view.student.LoginWindow').show();
         }else{
             var cmp = Ext.getCmp('rqtsAnswer');
             if(cmp.getValue()&&cmp.isValid()) {
-                var predata = localStorage.getItem('preRqts');
+                var predata = sessionStorage.getItem('preRqts');
                 if (predata == cmp.getValue()) {
                     this.showResultText('当前答案与上次提交重复');
                 } else {
-                    localStorage.setItem('preRqts',cmp.getValue());
+                    sessionStorage.setItem('preRqts',cmp.getValue());
                     Ext.Ajax.request({
                         url: SoftwareTest.server + 'question/rqts.do',
                         params: {
@@ -91,7 +91,7 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
              t.dockedItems.items[0].add(loginStatus);
         }else{
             t.dockedItems.items[0].add(Ext.create('SoftwareTest.view.student.LoginStatus'));
-            if(localStorage.getItem('isLogin')=='true'){
+            if(sessionStorage.getItem('isLogin')=='true'){
                 Ext.Ajax.request({
                     url:SoftwareTest.server+'student/isLogin.do',
                     success:function(response){
@@ -101,11 +101,11 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
                             var tmp = Ext.getCmp('studentId');
                             tmp.setText(response.responseText);
                             tmp.setHidden(false);
-                            localStorage.setItem('isLogin',true);
-                            localStorage.setItem('studentId',response.responseText);
+                            sessionStorage.setItem('isLogin',true);
+                            sessionStorage.setItem('studentId',response.responseText);
                         }else{
-                            localStorage.setItem('isLogin',false);
-                            localStorage.setItem('studentId','');
+                            sessionStorage.setItem('isLogin',false);
+                            sessionStorage.setItem('studentId','');
                         }
                     }
                 });

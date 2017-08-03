@@ -17,8 +17,8 @@ Ext.define('SoftwareTest.view.student.LoginStatusController', {
                             Ext.getCmp('login').setHidden(false);
                             Ext.getCmp('logout').setHidden(true);
                             Ext.getCmp('studentId').setHidden(true);
-                            localStorage.setItem("isLogin",true);
-                            localStorage.setItem("isLogin",false);
+                            sessionStorage.setItem("isLogin",true);
+                            sessionStorage.setItem("isLogin",false);
                             // SoftwareTest.apply(SoftwareTest,{isLogin:false});
                         }else{
                             console.log('注销失败');

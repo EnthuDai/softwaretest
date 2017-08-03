@@ -15,8 +15,8 @@ Ext.define('SoftwareTest.view.student.LoginWindowController', {
                     var tmp = Ext.getCmp('studentId');
                     tmp.setText(form.getValues().id);
                     tmp.setHidden(false);
-                    localStorage.setItem('isLogin',true);
-                    localStorage.setItem('studentId',form.getValues().id);
+                    sessionStorage.setItem('isLogin',true);
+                    sessionStorage.setItem('studentId',form.getValues().id);
                     form.ownerCt.close();
                 }else{
                     Ext.Msg.alert('错误','账号或密码错误');

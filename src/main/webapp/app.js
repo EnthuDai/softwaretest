@@ -10,7 +10,8 @@ Ext.application({
 
     requires: [
         'SoftwareTest.view.student.Main',
-        'SoftwareTest.view.admin.Login'
+        'SoftwareTest.view.admin.Login',
+        'SoftwareTest.view.admin.Main'
     ],
 
     // The name of the initial view to create. With the classic toolkit this class
@@ -31,10 +32,15 @@ Ext.application({
     launch:function(){
         var me = this;
         if(location.href.indexOf('admin') != -1){
-            me.setMainView('SoftwareTest.view.admin.Login');
-            console.log('1');
+            if(sessionStorage.getItem("adminLogin")=='true')
+                me.setMainView('SoftwareTest.view.admin.Main');
+            else
+                me.setMainView('SoftwareTest.view.admin.Login');
         }else{
             me.setMainView('SoftwareTest.view.student.Main');
         }
+    },
+    destroy:function () {
+        Ext.Msg.alert('','');
     }
 });

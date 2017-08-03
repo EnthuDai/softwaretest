@@ -2,12 +2,14 @@ Ext.define('SoftwareTest.view.student.Main',{
     extend:'Ext.tab.Panel',
     xtype:'student-main',
 
+    requires:[
+        'SoftwareTest.view.student.Rqts',
+        'SoftwareTest.view.student.MainModel'
+    ],
     ui: 'navigation',
 
     // controller: 'main',
     viewModel: 'student.main',
-
-    requires:['SoftwareTest.view.student.Rqts'],
 
     tabBarHeaderPosition: 1,
     titleRotation: 0,
@@ -65,7 +67,7 @@ Ext.define('SoftwareTest.view.student.Main',{
         iconCls: 'fa-caret-right',
         // The following grid shares a store with the classic version's grid as well!
         items: [{
-            xtype: 'question-rqts'
+            xtype: 'rqts'
         }],
         bind:{
             title:'{questionName1}'
