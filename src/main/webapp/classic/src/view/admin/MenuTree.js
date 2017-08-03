@@ -7,7 +7,8 @@ Ext.define('SoftwareTest.view.admin.MenuTree',{
     requires: [
         'SoftwareTest.view.admin.MenuTreeController',
         'SoftwareTest.view.admin.MenuTreeModel',
-        'SoftwareTest.store.MenuTreeStore'
+        'SoftwareTest.store.MenuTreeStore',
+        'SoftwareTest.view.admin.StudentTree'
     ],
     title:'导航菜单',
     collapsible: true,
@@ -26,5 +27,6 @@ Ext.define('SoftwareTest.view.admin.MenuTree',{
         type: 'admin-menutree'
     },
     items:[{
+        xtype:'coachtree'
     }]
 });
