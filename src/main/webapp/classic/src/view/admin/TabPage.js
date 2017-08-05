@@ -12,6 +12,7 @@ Ext.define('SoftwareTest.view.admin.TabPage',{
     viewModel: {
         type: 'admin-tabpage'
     },
+    id:'tabpage',
 
     items:[{
         html:'hell'

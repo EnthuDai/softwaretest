@@ -1,6 +1,10 @@
 package cn.edu.jit.mapper;
 
+import cn.edu.jit.po.Classes;
 import cn.edu.jit.po.Student;
+
+import java.util.List;
+import java.util.Map;
 
 public interface StudentMapper {
     /**
@@ -52,4 +56,9 @@ public interface StudentMapper {
     int updateByPrimaryKey(Student record);
 
     Student selectByNameAndPassword(Student record);
+
+    public List<Student> selectByKey(Map<String,Object> map);
+    public int selectCount(Map<String,Object> map);
+
+    public int selectCountByClassId(int id);
 }

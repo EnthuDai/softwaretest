@@ -11,7 +11,8 @@ Ext.application({
     requires: [
         'SoftwareTest.view.student.Main',
         'SoftwareTest.view.admin.Login',
-        'SoftwareTest.view.admin.Main'
+        'SoftwareTest.view.admin.Main',
+        'SoftwareTest.store.ClassStore'
     ],
 
     // The name of the initial view to create. With the classic toolkit this class
