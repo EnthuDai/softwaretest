@@ -5,8 +5,8 @@ Ext.define('SoftwareTest.store.ClassStore', {
 
     model:'SoftwareTest.model.ClassModel',
 
-    autoLoad   : false,
-    pageSize:25,
+    autoLoad: true,
+    pageSize: 0,
     proxy:{
         type:'ajax',
         api:{

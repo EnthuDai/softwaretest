@@ -53,10 +53,5 @@ Ext.define('SoftwareTest.view.admin.ClassGrid',{
         type:'checkboxmodel',
         mode:'SINGLE',
         checkOnly:false
-    },//选择模式
-    listeners:{
-        render: function() {
-            this.getStore().load();
-        }
     }
 });

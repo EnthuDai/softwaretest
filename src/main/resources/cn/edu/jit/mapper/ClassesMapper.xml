@@ -40,7 +40,7 @@
       <include refid="Base_Column_List" />
       from classes
       <include refid="query_all"></include>
-      <if test="start!=null">
+      <if test="start!=null and limit!=0">
         LIMIT #{start}, #{limit}
       </if>
     </select>
