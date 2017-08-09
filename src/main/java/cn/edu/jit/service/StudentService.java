@@ -20,4 +20,7 @@ public interface StudentService {
     public boolean delete(Student item);
 
     public int getCountByClasses(int id);
+
+    public List getPoListByClass(Classes classes,Page page);
+    public int getPoJoCount(Classes classes) ;
 }

@@ -52,7 +52,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean insertSelective(Student item) {
-        return 1==studentMapper.insertSelective(item);
+        try{
+            return 1==studentMapper.insertSelective(item);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
@@ -69,6 +74,34 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public int getCountByClasses(int id) {
         return studentMapper.selectCountByClassId(id);
+    }
+
+    @Override
+    public List getPoListByClass(Classes classes,Page page) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("start",page.getStart());
+        map.put("limit", page.getLimit());
+        if(classes!=null){
+            map.put("major", classes.getMajor());
+            map.put("session", classes.getSession());
+            map.put("id",classes.getId());
+            map.put("name",classes.getName());
+        }
+        return  studentMapper.selectPojo(map);
+    }
+
+    @Override
+    public int getPoJoCount(Classes classes) {
+        if(classes!=null) {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("major", classes.getMajor());
+            map.put("session", classes.getSession());
+            map.put("id", classes.getId());
+            map.put("name", classes.getName());
+            return studentMapper.selectPoJoCount(map);
+        }else
+            return studentMapper.selectPoJoCount(null);
+
     }
 
 

@@ -2,6 +2,7 @@ package cn.edu.jit.mapper;
 
 import cn.edu.jit.po.Classes;
 import cn.edu.jit.po.Student;
+import cn.edu.jit.po.StudentPoJo;
 
 import java.util.List;
 import java.util.Map;
@@ -61,4 +62,7 @@ public interface StudentMapper {
     public int selectCount(Map<String,Object> map);
 
     public int selectCountByClassId(int id);
+
+    public List<StudentPoJo> selectPojo(Map<String,Object> map);
+    public int selectPoJoCount(Map<String ,Object> map);
 }

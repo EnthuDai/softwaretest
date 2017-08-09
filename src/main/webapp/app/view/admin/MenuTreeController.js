@@ -16,12 +16,11 @@ Ext.define('SoftwareTest.view.admin.MenuTreeController', {
             if(!Ext.getCmp('studentgrid')){
                 Ext.getCmp('tabpage').add({
                     xtype:'studentgrid',
-                    title:'班级列表'
+                    title:'学生列表'
                 }).show();
             }else{
                 Ext.getCmp('studentgrid').show();
             }
         }
     }
-
 });

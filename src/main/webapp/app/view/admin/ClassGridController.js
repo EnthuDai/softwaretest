@@ -34,5 +34,6 @@ Ext.define('SoftwareTest.view.admin.ClassGridController', {
                 grid.store.sync();
             }
         }
+        Ext.getStore('ClassStore').reload();
     }
 });

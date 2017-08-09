@@ -4,22 +4,28 @@ Ext.define('SoftwareTest.store.StudentStore', {
 
     storeId:'StudentStore',
 
-    fields: [
-        'name', 'email', 'phone'
-    ],
 
-    data: { items: [
-        { studentName: 'Jean Luc', email: "jeanluc.picard@enterprise.com", phone: "555-111-1111" },
-        { name: 'Worf',     email: "worf.moghsson@enterprise.com",  phone: "555-222-2222" },
-        { name: 'Deanna',   email: "deanna.troi@enterprise.com",    phone: "555-333-3333" },
-        { name: 'Data',     email: "mr.data@enterprise.com",        phone: "555-444-4444" }
-    ]},
-
-    proxy: {
-        type: 'memory',
-        reader: {
-            type: 'json',
-            rootProperty: 'items'
+    model:'SoftwareTest.model.StudentModel',
+    autoLoad: true,
+    pageSize: 25,
+    proxy:{
+        type:'ajax',
+        api:{
+            read:'student/selectByClass.do',
+            update:'student/update.do',
+            create:'student/create.do',
+            destroy:'student/delete.do'
+        },
+        actionMethods: {
+            create : 'POST',
+            read   : 'POST', // by default GET
+            update : 'POST',
+            destroy: 'POST'
+        },
+        reader:{
+            type:'json',
+            rootProperty:'data'	,
+            successProperty:'success'
         }
     }
 });

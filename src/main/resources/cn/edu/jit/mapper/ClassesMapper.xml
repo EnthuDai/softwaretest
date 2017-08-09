@@ -35,7 +35,7 @@
     from classes
     where id = #{id,jdbcType=INTEGER}
   </select>
-    <select id="selectByKey" resultType="cn.edu.jit.po.Classes">
+    <select id="selectByKey" resultType="cn.edu.jit.po.Classes" parameterType="java.util.Map">
       SELECT
       <include refid="Base_Column_List" />
       from classes

@@ -10,6 +10,15 @@
     <result column="name" property="name" jdbcType="CHAR" />
     <result column="classes" property="classes" jdbcType="INTEGER" />
   </resultMap>
+  
+  <resultMap id="PoJo" type="cn.edu.jit.po.StudentPoJo">
+    <id column="studentId" property="studentId" jdbcType="CHAR"/>
+    <result column="studentName" property="studentName" jdbcType="CHAR"/>
+    <result column="classId" property="classId" jdbcType="INTEGER"/>
+    <result column="session" property="session" jdbcType="CHAR"/>
+    <result column="major" property="major" jdbcType="CHAR"/>
+    <result column="className" property="className" jdbcType="CHAR"/>
+  </resultMap>
   <sql id="query_all">
     <where>
       <if test="key!=null and key!=''">
@@ -139,4 +148,44 @@
       password = #{password,jdbcType=CHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+
+  <sql id="queryByClass">
+      <if test="session!=null and session!=''">
+        and classes.session = #{session}
+      </if>
+      <if test="major!=null and major!=''">
+        and classes.major = #{major}
+      </if>
+      <if test="name!=null and name!=''">
+        and classes.name = #{name}
+      </if>
+  </sql>
+  <select id="selectPojo" resultMap="PoJo" parameterType="java.util.Map">
+    SELECT
+	student.id studentId ,
+    student.name studentName ,
+    classes.session session,
+    classes.major major ,
+    classes.name className
+    FROM software_test.student,software_test.classes where software_test.student.classes = software_test.classes.id
+    <if test="id!=null">
+      and classes.id = #{id}
+    </if>
+    <if test="id==null">
+     <include refid="queryByClass"/>
+    </if>
+    <if test="start!=null and limit!=0">
+      LIMIT #{start}, #{limit}
+    </if>
+  </select>
+  <select id="selectPoJoCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+    SELECT count(*)
+    FROM software_test.student,software_test.classes where software_test.student.classes = software_test.classes.id
+    <if test="id!=null">
+      and classes.id = #{id}
+    </if>
+    <if test="id==null">
+     <include refid="queryByClass"/>
+    </if>
+  </select>
 </mapper>
