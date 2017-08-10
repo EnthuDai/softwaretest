@@ -1,6 +1,7 @@
 package cn.edu.jit.service.impl;
 
 import cn.edu.jit.mapper.StudentMapper;
+import cn.edu.jit.mapper.StudentMaxScoreViewMapper;
 import cn.edu.jit.po.Classes;
 import cn.edu.jit.po.Student;
 import cn.edu.jit.service.StudentService;
@@ -20,6 +21,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     StudentMapper studentMapper;
+
+    @Autowired
+    StudentMaxScoreViewMapper studentMaxScoreViewMapper;
 
     @Override
     public Student checkStudentLogin(String id, String password) {
@@ -102,6 +106,16 @@ public class StudentServiceImpl implements StudentService {
         }else
             return studentMapper.selectPoJoCount(null);
 
+    }
+
+    @Override
+    public List getMaxScore(Map<String, Object> map) {
+        return studentMaxScoreViewMapper.select(map);
+    }
+
+    @Override
+    public int getMaxScoreCount(Map<String, Object> map) {
+        return studentMaxScoreViewMapper.selectCount(map);
     }
 
 

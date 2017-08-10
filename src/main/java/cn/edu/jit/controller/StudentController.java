@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -87,6 +89,22 @@ public class StudentController {
         s.setClasses(pojo.getClassId());
         s.setName(pojo.getStudentName());
         return new ExtSimpleResponse(studentService.updateByPrimaryKeySelective(s));
+    }
+
+    @RequestMapping("getScore.do")
+    public @ResponseBody Grid getScore(Page page,Integer session,String major,String classId,String className,Integer questionId){
+        Map<String ,Object> map = new HashMap<>();
+        map.put("start",page.getStart());
+        map.put("limit", page.getLimit());
+        map.put("major", major);
+        map.put("session", session);
+        map.put("classId",classId);
+        map.put("className",className);
+        map.put("questionId",questionId);
+        Grid grid = new Grid();
+        grid.setData(studentService.getMaxScore(map));
+        grid.setTotal(studentService.getMaxScoreCount(map));
+        return grid;
     }
 
 }

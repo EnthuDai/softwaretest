@@ -21,6 +21,15 @@ Ext.define('SoftwareTest.view.admin.MenuTreeController', {
             }else{
                 Ext.getCmp('studentgrid').show();
             }
+        }else if(item.data.text==='分数查看'){
+            if(!Ext.getCmp('rqtsgrid')){
+                Ext.getCmp('tabpage').add({
+                    xtype:'rqtsgrid',
+                    title:'分数查看'
+                }).show();
+            }else{
+                Ext.getCmp('rqtsgrid').show();
+            }
         }
     }
 });

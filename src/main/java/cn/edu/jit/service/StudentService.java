@@ -5,6 +5,7 @@ import cn.edu.jit.po.Student;
 import cn.edu.jit.util.Page;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dxy on 2017/7/11.
@@ -23,4 +24,8 @@ public interface StudentService {
 
     public List getPoListByClass(Classes classes,Page page);
     public int getPoJoCount(Classes classes) ;
+
+    public List getMaxScore(Map<String ,Object> map);
+
+    public int getMaxScoreCount(Map<String ,Object> map);
 }
