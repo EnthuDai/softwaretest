@@ -1,19 +1,21 @@
-Ext.define('SoftwareTest.view.student.Rqts',{
-    extend: 'Ext.panel.Panel',
-    xtype:'rqts',
 
-    id:'rqts-panel',
+Ext.define('SoftwareTest.view.student.Zlq',{
+    extend: 'Ext.panel.Panel',
+    xtype:'zlq',
+
+
+    id:'zlq-panel',
 
     requires: [
         'SoftwareTest.view.student.QuestionController',
-        'SoftwareTest.view.student.MainModel',
-        'SoftwareTest.view.student.LoginStatus'
+        'SoftwareTest.view.student.MainModel'
     ],
 
     controller: 'student-question',
     viewModel: {
         type: 'student.main'
     },
+
     layout:{
         type:'vbox',
         align:'center'
@@ -22,12 +24,12 @@ Ext.define('SoftwareTest.view.student.Rqts',{
     dockedItems:[{
         xtype:'toolbar',
         dock:'top',
-        id:'loginToolBar',
         layout:'fit',
         width:'100%',
         padding:'0 20 0 0',
         height:50
     }],
+
 
     items:[{
         xtype:'panel',
@@ -41,7 +43,7 @@ Ext.define('SoftwareTest.view.student.Rqts',{
         items:[{
             xtype:'label',
             bind:{
-                html:'题目名称:{questionName1}'
+                html:'题目名称:{questionName2}'
             },
             height:36,
             margin:3,
@@ -65,7 +67,7 @@ Ext.define('SoftwareTest.view.student.Rqts',{
             height:'auto',
             // readOnly:true,
             bind:{
-                value:'{questionDescription1}'
+                value:'{questionDescription2}'
             }
         },{
             xtype:'label',
@@ -81,9 +83,9 @@ Ext.define('SoftwareTest.view.student.Rqts',{
             xtype:'textarea',
             width:'100%',
             height:250,
-            id:'rqtsAnswer',
+            id:'zlqAnswer',
             emptyText:"多个用例用半角分号 ; 隔开,例如2012-1-1;2012-1-2",
-            vtype:'rqts'
+            vtype:'zlq'
         }]
     },{
         xtype:'panel',
@@ -104,22 +106,22 @@ Ext.define('SoftwareTest.view.student.Rqts',{
             xtype:'button',
             text:'提交',
             scale:'medium',
-            handler:'rqtsSubmit'
+            handler:'zlqSubmit'
         }]
     }],
-    listeners:{
-        beforerender:'beforerender'
-    },
+    // listeners:{
+    //     beforerender:'beforerender'
+    // },
 
     initComponent:function(){
         Ext.define('SoftwareTest.form.field.VTypes',{
             override: 'Ext.form.field.VTypes',
-            rqts:function(value){
+            zlq:function(value){
                 return this.rqtsTest.test(value);
             },
-            rqtsTest:/^\d+|-|;$/,
-            rqtsMask:/^\d+|-|;$/,
-            rqtsText:'出现非法字符'
+            zlqTest:/^\d+|,|，|;/,
+            zlqMask:/^\d+|,|，|;/,
+            zlqText:'出现非法字符'
         });
         this.callParent(arguments);
     }

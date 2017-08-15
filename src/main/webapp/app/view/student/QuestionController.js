@@ -20,14 +20,14 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
     },
 
     rqtsSubmit:function(){
-        if(!sessionStorage||sessionStorage.isLogin=='false'){
+        if(!sessionStorage||sessionStorage.isLogin==='false'){
             this.showResultText('尚未登录，请先登录');
             Ext.create('SoftwareTest.view.student.LoginWindow').show();
         }else{
             var cmp = Ext.getCmp('rqtsAnswer');
             if(cmp.getValue()&&cmp.isValid()) {
                 var predata = sessionStorage.getItem('preRqts');
-                if (predata == cmp.getValue()) {
+                if (predata === cmp.getValue()) {
                     this.showResultText('当前答案与上次提交重复');
                 } else {
                     sessionStorage.setItem('preRqts',cmp.getValue());
@@ -81,7 +81,75 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
         }
     },
 
+    zlqSubmit:function(){
+        if(!sessionStorage||sessionStorage.isLogin==='false'){
+            this.showResultText('尚未登录，请先登录');
+            Ext.create('SoftwareTest.view.student.LoginWindow').show();
+        }else{
+            var cmp = Ext.getCmp('zlqAnswer');
+            if(cmp.getValue()&&cmp.isValid()) {
+                var predata = sessionStorage.getItem('preZlq');
+                if (predata === cmp.getValue()) {
+                    this.showResultText('当前答案与上次提交重复');
+                } else {
+                    sessionStorage.setItem('preZlq',cmp.getValue());
+                    Ext.Ajax.request({
+                        url: SoftwareTest.server + 'question/zlq.do',
+                        params: {
+                            data: cmp.getValue()
+                        },
+                        success: function (response) {
+                            var res = Ext.JSON.decode(response.responseText);
+                            if (!res.success) {
+                                Ext.Msg.alert("错误", "登录超时，请重新登录！");
+                            } else {
+                                Ext.create('Ext.window.Window', {
+                                    height: 180,
+                                    title: '得分情况',
+                                    items: [{
+                                        xtype: 'grid',
+                                        align:'center',
+                                        width:580,
+                                        store: {
+                                            fields: ['ZS','FG', 'YX', 'YLZS', 'FG', 'BAD','score'],
+                                            data: res
+                                        },
+                                        columns: [
+                                            {text: '需覆盖',align:'center',dataIndex: 'ZS'},
+                                            {text: '已覆盖', align:'center',dataIndex: 'FG'},
+                                            {text: '有效用例数', align:'center',dataIndex: 'YLZS'},
+                                            {text: '错误数据', align:'center',dataIndex: 'BAD'},
+                                            {text: '覆盖到的种类', align:'center', dataIndex: 'FG'},
+                                            {text: '得分', align:'center', dataIndex: 'score',flex:0.5}
+                                        ]
+                                    }],
+                                    buttons: [{
+                                        text: '确定',
+                                        handler: function() {
+                                            this.up('window').close();
+                                        }
+                                    }]
+                                }).show();
+                            }
+                        },
+                        failure: function () {
+                            Ext.Msg.alert('错误', '请检查网络状况或联系管理员');
+                        }
+                    });
+                }
+            } else{
+                this.showResultText('数据格式不符合要求');
+            }
+        }
+    },
+
+    tabchange:function(tabPanel, newCard, oldCard){
+        // console.log(newCard.items);
+        // this.renderLoginStatus(newCard.items);
+    },
+
     beforerender:function(t){
+        console.log(t);
         this.renderLoginStatus(t);
     },
 

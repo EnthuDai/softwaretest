@@ -158,6 +158,10 @@ public class AnalyseChange {
         map.put(FG,n2);
         map.put(FG_SUM,sum);
         map.put(YL,this.data);
+        map.put("ZS",ZS);
+        map.put("score",n2*100/ZS);
+        map.put("data",this.data);
+
         return map;
     }
 }

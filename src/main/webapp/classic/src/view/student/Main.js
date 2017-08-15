@@ -4,11 +4,14 @@ Ext.define('SoftwareTest.view.student.Main',{
 
     requires:[
         'SoftwareTest.view.student.Rqts',
-        'SoftwareTest.view.student.MainModel'
+        'SoftwareTest.view.student.Zlq',
+        'SoftwareTest.view.student.MainModel',
+        'SoftwareTest.view.student.QuestionController'
+
     ],
     ui: 'navigation',
 
-    // controller: 'main',
+    controller: 'student-question',
     viewModel: 'student.main',
 
     tabBarHeaderPosition: 1,
@@ -65,7 +68,6 @@ Ext.define('SoftwareTest.view.student.Main',{
 
     items: [{
         iconCls: 'fa-caret-right',
-        // The following grid shares a store with the classic version's grid as well!
         items: [{
             xtype: 'rqts'
         }],
@@ -73,12 +75,12 @@ Ext.define('SoftwareTest.view.student.Main',{
             title:'{questionName1}'
         }
     }, {
-        title: 'Users',
         iconCls: 'fa-caret-right',
         bind: {
-            title:'{questionName2}',
-            html: '{loremIpsum}'
-        }
+            title:'{questionName2}'},
+        items:[{
+            xtype:'zlq'
+        }]
     }, {
         title: 'Groups',
         iconCls: 'fa-caret-right',
@@ -93,4 +95,9 @@ Ext.define('SoftwareTest.view.student.Main',{
             html: '{loremIpsum}'
         }
     }]
+    ,
+    listeners:{
+        tabchange:'tabchange'
+    }
+
 });

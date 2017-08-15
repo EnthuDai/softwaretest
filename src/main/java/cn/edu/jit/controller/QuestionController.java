@@ -1,5 +1,6 @@
 package cn.edu.jit.controller;
 
+import cn.edu.jit.po.ChangeSubmission;
 import cn.edu.jit.po.RqtsSubmission;
 import cn.edu.jit.po.Student;
 import cn.edu.jit.service.QuestionService;
@@ -36,6 +37,21 @@ public class QuestionController {
         System.out.println(user.getId());
         questionService.rqtsSave((List<RqtsSubmission>) map.get(AnalyseDate.RQTS_DATE),user.getId(),(int)score);
         map.put("score",(int)score);
+        map.put("success",true);
+        return map;
+    }
+
+    @RequestMapping("zlq.do")
+    public @ResponseBody Map zlq(String data, HttpSession session){
+        if(session==null||session.getAttribute("student")==null) {
+            Map map = new HashMap();
+            map.put("success",false);
+            return map;
+        }
+        Student user = (Student)session.getAttribute("student");
+        Map map = questionService.zlqAnalyse(data);
+
+        questionService.changeSave((List<ChangeSubmission>)map.get("data"),user.getId(),(int)map.get("score"));
         map.put("success",true);
         return map;
     }
