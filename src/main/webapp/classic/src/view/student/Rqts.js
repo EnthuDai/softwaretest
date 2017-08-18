@@ -59,13 +59,14 @@ Ext.define('SoftwareTest.view.student.Rqts',{
                 fontSize:'24px'
             }
         },{
-            xtype:'textarea',
+            xtype:'panel',
             ui:'rqts',
             width:'100%',
             height:'auto',
+            padding:'0 0 10 0',
             // readOnly:true,
             bind:{
-                value:'{questionDescription1}'
+                html:'{questionDescription1}'
             }
         },{
             xtype:'label',

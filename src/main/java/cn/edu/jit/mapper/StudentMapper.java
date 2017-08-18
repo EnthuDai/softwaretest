@@ -64,5 +64,8 @@ public interface StudentMapper {
     public int selectCountByClassId(int id);
 
     public List<StudentPoJo> selectPojo(Map<String,Object> map);
+
+    public StudentPoJo selectById(String id);
+
     public int selectPoJoCount(Map<String ,Object> map);
 }

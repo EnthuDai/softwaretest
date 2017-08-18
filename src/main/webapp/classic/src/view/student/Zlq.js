@@ -61,13 +61,14 @@ Ext.define('SoftwareTest.view.student.Zlq',{
                 fontSize:'24px'
             }
         },{
-            xtype:'textarea',
+            xtype:'panel',
             ui:'rqts',
             width:'100%',
             height:'auto',
+            padding:'0 0 10 0',
             // readOnly:true,
             bind:{
-                value:'{questionDescription2}'
+                html:'{questionDescription2}'
             }
         },{
             xtype:'label',
@@ -84,7 +85,7 @@ Ext.define('SoftwareTest.view.student.Zlq',{
             width:'100%',
             height:250,
             id:'zlqAnswer',
-            emptyText:"多个用例用半角分号 ; 隔开,例如2012-1-1;2012-1-2",
+            emptyText:"价格，付款数之间用逗号‘,’分开，多个用例用分号‘;’分开,例如：30,50;5,100",
             vtype:'zlq'
         }]
     },{
@@ -98,7 +99,7 @@ Ext.define('SoftwareTest.view.student.Zlq',{
             xtype:'button',
             text:'重置',
             scale:'medium',
-            handler:'rqts_reset'
+            handler:'zlq_reset'
         },{
             xtype:'tbspacer',
             width:8

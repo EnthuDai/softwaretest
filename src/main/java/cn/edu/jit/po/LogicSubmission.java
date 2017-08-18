@@ -165,4 +165,10 @@ public class LogicSubmission {
         this.x = x;
         this.y = y;
     }
+
+    public LogicSubmission(Integer x, Integer y, int type) {
+        this.x = x;
+        this.type = type;
+        this.y = y;
+    }
 }

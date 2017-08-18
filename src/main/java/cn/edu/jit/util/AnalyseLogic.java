@@ -3,7 +3,9 @@ package cn.edu.jit.util;
 import cn.edu.jit.po.LogicSubmission;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AnalyseLogic {
 
@@ -19,7 +21,33 @@ public class AnalyseLogic {
 
     public List<LogicSubmission> pathCoverage;
 
-    public AnalyseLogic(){
+    public AnalyseLogic() {
+    }
+
+    public AnalyseLogic(String statement, String branch, String condition,
+                        String branchCondition, String conditionAssemble, String path){
+        this.statementCoverage = parse(statement,1);
+        this.branchCoverage = parse(branch,2);
+        this.conditionaCoverage = parse(condition,3);
+        this.branchConditionCoverage = parse(branchCondition,4);
+        this.conditionalAssemblyCoverage  = parse(conditionAssemble,5);
+        this.pathCoverage = parse(path,6);
+    }
+
+    private List<LogicSubmission> parse(String str, int type){
+        List<LogicSubmission> list  = new ArrayList<>();
+        String[] split = str.split("[;；]");
+        for(String item : split){
+            String[] sp = item.split("[,，]");
+            try{
+                int n1 = Integer.parseInt(sp[0]);
+                int n2 = Integer.parseInt(sp[1]);
+                list.add(new LogicSubmission(n1,n2,type));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return list;
     }
 
 
@@ -356,6 +384,34 @@ public class AnalyseLogic {
             if(!item)   return false;
         }
         return true;
+    }
+
+    public Map<String ,Object> getResult(){
+        int count = 0;
+        Map<String ,Object> map = new HashMap<>();
+        map.put("statementScore",this.getStatementCoverage());
+        map.put("branchScore",this.getBranchCoverage());
+        map.put("conditionScore",this.getConditionaCoverage());
+        map.put("branchConditionScore",this.getBranchConditionalCoverage());
+        map.put("conditionAssembleScore",this.getConditionalAssemblyCoverate());
+        map.put("pathScore",this.getPathCoverage());
+        if(this.getStatementCoverage()) count++;
+        if(this.getBranchCoverage()) count++;
+        if(this.getConditionaCoverage()) count++;
+        if(this.getBranchConditionalCoverage()) count++;
+        if(this.getConditionalAssemblyCoverate()) count++;
+        if(this.getPathCoverage()) count++;
+
+        List<LogicSubmission> list = new ArrayList<>();
+        list.addAll(statementCoverage);
+        list.addAll(branchCoverage);
+        list.addAll(conditionaCoverage);
+        list.addAll(branchConditionCoverage);
+        list.addAll(conditionalAssemblyCoverage);
+        list.addAll(pathCoverage);
+        map.put("data",list);
+        map.put("score",count*100/6);
+        return map;
     }
 
 }

@@ -5,11 +5,13 @@ Ext.define('SoftwareTest.view.student.Main',{
     requires:[
         'SoftwareTest.view.student.Rqts',
         'SoftwareTest.view.student.Zlq',
+        'SoftwareTest.view.student.User',
         'SoftwareTest.view.student.MainModel',
-        'SoftwareTest.view.student.QuestionController'
-
+        'SoftwareTest.view.student.QuestionController',
+        'SoftwareTest.view.student.Logic'
     ],
     ui: 'navigation',
+    id:'student-main',
 
     controller: 'student-question',
     viewModel: 'student.main',
@@ -82,19 +84,26 @@ Ext.define('SoftwareTest.view.student.Main',{
             xtype:'zlq'
         }]
     }, {
-        title: 'Groups',
         iconCls: 'fa-caret-right',
         bind: {
-            title:'{questionName3}',
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: '修改密码',
-        iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }]
+            title:'{questionName3}'
+        },
+        items:[{
+            xtype:'logic'
+        }]
+    }
+    //     {
+    //     title: '个人中心',
+    //     iconCls: 'fa-user',
+    //     layout:{
+    //         type:'vbox',
+    //         align:'center'
+    //     },
+    //     items:[{
+    //         xtype:'user'
+    //     }]
+    // }
+    ]
     ,
     listeners:{
         tabchange:'tabchange'

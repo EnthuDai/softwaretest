@@ -2,6 +2,7 @@ package cn.edu.jit.service;
 
 import cn.edu.jit.po.Classes;
 import cn.edu.jit.po.Student;
+import cn.edu.jit.po.StudentPoJo;
 import cn.edu.jit.util.Page;
 
 import java.util.List;
@@ -24,6 +25,8 @@ public interface StudentService {
 
     public List getPoListByClass(Classes classes,Page page);
     public int getPoJoCount(Classes classes) ;
+
+    public StudentPoJo getById(String id);
 
     public List getMaxScore(Map<String ,Object> map);
 

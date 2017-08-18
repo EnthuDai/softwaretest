@@ -4,6 +4,7 @@ import cn.edu.jit.mapper.StudentMapper;
 import cn.edu.jit.mapper.StudentMaxScoreViewMapper;
 import cn.edu.jit.po.Classes;
 import cn.edu.jit.po.Student;
+import cn.edu.jit.po.StudentPoJo;
 import cn.edu.jit.service.StudentService;
 import cn.edu.jit.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,7 +106,11 @@ public class StudentServiceImpl implements StudentService {
             return studentMapper.selectPoJoCount(map);
         }else
             return studentMapper.selectPoJoCount(null);
+    }
 
+    @Override
+    public StudentPoJo getById(String id) {
+        return studentMapper.selectById(id);
     }
 
     @Override

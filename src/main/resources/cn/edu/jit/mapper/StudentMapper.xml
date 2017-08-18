@@ -188,4 +188,9 @@
      <include refid="queryByClass"/>
     </if>
   </select>
+    <select id="selectById" resultType="cn.edu.jit.po.StudentPoJo" parameterType="java.lang.String">
+      SELECT *
+      FROM student_classes_view
+      WHERE studentId = #{id}
+    </select>
 </mapper>

@@ -18,6 +18,30 @@ Ext.define('SoftwareTest.view.student.LoginWindowController', {
                     sessionStorage.setItem('isLogin',true);
                     sessionStorage.setItem('studentId',form.getValues().id);
                     form.ownerCt.close();
+                    if(!Ext.getCmp('user')){
+                        Ext.Ajax.request({
+                            url:SoftwareTest.server+'student/getInfo.do',
+                            params:{
+                                studentId:sessionStorage.getItem('studentId')
+                            },
+                            success:function (response) {
+                                var res2 = Ext.JSON.decode(response.responseText);
+                                sessionStorage.setItem('studentName',res2.studentName);
+                                sessionStorage.setItem('session',res2.session);
+                                sessionStorage.setItem('major',res2.major);
+                                sessionStorage.setItem('className',res2.className);
+                            }
+                        });
+                        Ext.getCmp('student-main').add({
+                            xtype:'user',
+                            title: '个人中心',
+                            iconCls: 'fa-user',
+                            layout:{
+                                type:'vbox',
+                                align:'center'
+                            }
+                        });
+                    }
                 }else{
                     Ext.Msg.alert('错误','账号或密码错误');
                 }

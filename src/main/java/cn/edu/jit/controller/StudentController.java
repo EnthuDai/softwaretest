@@ -82,6 +82,7 @@ public class StudentController {
         s.setId(pojo.getStudentId());
         return new ExtSimpleResponse(studentService.delete(s));
     }
+
     @RequestMapping("update.do")
     public @ResponseBody ExtSimpleResponse update(@RequestBody StudentPoJo pojo ){
         Student s = new Student();
@@ -106,5 +107,10 @@ public class StudentController {
         grid.setTotal(studentService.getMaxScoreCount(map));
         return grid;
     }
+    @RequestMapping("getInfo.do")
+    public @ResponseBody StudentPoJo getInfo(String studentId){
+        return studentService.getById(studentId);
+    }
+
 
 }

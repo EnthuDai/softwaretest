@@ -20,6 +20,8 @@ Ext.define('SoftwareTest.view.student.LoginStatusController', {
                             sessionStorage.setItem("isLogin",true);
                             sessionStorage.setItem("isLogin",false);
                             // SoftwareTest.apply(SoftwareTest,{isLogin:false});
+                            Ext.getCmp('user').close();
+                            sessionStorage.clear();
                         }else{
                             console.log('注销失败');
                         }
