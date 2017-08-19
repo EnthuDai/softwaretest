@@ -25,4 +25,6 @@ public interface StudentMaxScoreViewMapper {
     List select(Map map);
 
     int selectCount(Map map);
+
+    StudentMaxScoreView selectByStudentId(Map map);
 }

@@ -2,6 +2,7 @@ package cn.edu.jit.controller;
 
 import cn.edu.jit.po.Classes;
 import cn.edu.jit.po.Student;
+import cn.edu.jit.po.StudentMaxScoreView;
 import cn.edu.jit.po.StudentPoJo;
 import cn.edu.jit.service.StudentService;
 import cn.edu.jit.util.ExtSimpleResponse;
@@ -112,5 +113,31 @@ public class StudentController {
         return studentService.getById(studentId);
     }
 
+    @RequestMapping("changePassword.do")
+    public @ResponseBody ExtSimpleResponse changePassword(String studentId,String oldPassword,String newPassword){
+        Student s = studentService.checkStudentLogin(studentId,oldPassword);
+        if(s!=null){
+            s.setPassword(newPassword);
+            studentService.updateByPrimaryKeySelective(s);
+            return new ExtSimpleResponse(true);
+        }else{
+            return new ExtSimpleResponse(false);
+        }
+    }
+
+    @RequestMapping("getScoreById.do")
+    public @ResponseBody Integer getScoreById(String studentId,int questionId){
+        StudentMaxScoreView s = studentService.getScoreByStudentId(studentId,questionId);
+        return s==null ? 0:s.getScore();
+    }
+
+    @RequestMapping("getSubmission.do")
+    public @ResponseBody Grid getSubmission(String studentId,Page page){
+        Grid grid = new Grid();
+        grid.setData(studentService.getSubmissionByStudentId(studentId,page));
+        grid.setTotal(studentService.getSubmissionByStudentIdCount(studentId));
+        return grid;
+
+    }
 
 }

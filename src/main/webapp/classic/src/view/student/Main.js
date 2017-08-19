@@ -106,7 +106,20 @@ Ext.define('SoftwareTest.view.student.Main',{
     ]
     ,
     listeners:{
-        tabchange:'tabchange'
+        beforerender:function (t) {
+            if (sessionStorage.isLogin === 'true'){
+                if(!Ext.getCmp('user'))
+                    t.add({
+                        xtype:'user',
+                        title: '个人中心',
+                        iconCls: 'fa-user',
+                        layout:{
+                            type:'vbox',
+                            align:'center'
+                        }
+                    });
+            }
+        }
     }
 
 });

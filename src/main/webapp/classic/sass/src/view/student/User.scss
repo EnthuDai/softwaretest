@@ -1,1 +1,14 @@
-//$panel-body-background-color:'red'
+$button-medium-border-radius:3px;
+
+@include extjs-button-small-ui(
+    $ui:'logout_button',
+    $border-radius:3px,
+    $border-width:0px,
+    $background-color : #9a9797
+)
+
+@include extjs-button-small-ui(
+        $ui:'changePassword_button',
+        $border-radius:3px,
+        $border-width:0px
+)

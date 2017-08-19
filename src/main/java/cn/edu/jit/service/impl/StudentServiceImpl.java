@@ -2,9 +2,8 @@ package cn.edu.jit.service.impl;
 
 import cn.edu.jit.mapper.StudentMapper;
 import cn.edu.jit.mapper.StudentMaxScoreViewMapper;
-import cn.edu.jit.po.Classes;
-import cn.edu.jit.po.Student;
-import cn.edu.jit.po.StudentPoJo;
+import cn.edu.jit.mapper.SubmissionQuestionViewMapper;
+import cn.edu.jit.po.*;
 import cn.edu.jit.service.StudentService;
 import cn.edu.jit.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     StudentMaxScoreViewMapper studentMaxScoreViewMapper;
+
+    @Autowired
+    SubmissionQuestionViewMapper submissionQuestionMapper;
 
     @Override
     public Student checkStudentLogin(String id, String password) {
@@ -121,6 +123,29 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public int getMaxScoreCount(Map<String, Object> map) {
         return studentMaxScoreViewMapper.selectCount(map);
+    }
+
+    @Override
+    public StudentMaxScoreView getScoreByStudentId(String studentId,int questionId) {
+        Map<String ,Object> map = new HashMap<>();
+        map.put("studentId",studentId);
+        map.put("questionId", questionId);
+        return studentMaxScoreViewMapper.selectByStudentId(map);
+    }
+
+    @Override
+    public List getSubmissionByStudentId(String studentId, Page page) {
+        Map<String ,Object> map = new HashMap<>();
+        map.put("start",page.getStart());
+        map.put("limit", page.getLimit());
+        map.put("studentId", studentId);
+        return submissionQuestionMapper.selectSubmissionByStudentId(map);
+    }
+
+
+    @Override
+    public int getSubmissionByStudentIdCount(String studentId) {
+        return submissionQuestionMapper.selectSubmissionByStudentIdCount(studentId);
     }
 
 

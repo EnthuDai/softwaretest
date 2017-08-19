@@ -238,7 +238,6 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
     },
 
     beforerender: function (t) {
-        console.log(t);
         this.renderLoginStatus(t);
     },
 

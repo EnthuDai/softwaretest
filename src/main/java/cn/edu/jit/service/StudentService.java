@@ -1,8 +1,6 @@
 package cn.edu.jit.service;
 
-import cn.edu.jit.po.Classes;
-import cn.edu.jit.po.Student;
-import cn.edu.jit.po.StudentPoJo;
+import cn.edu.jit.po.*;
 import cn.edu.jit.util.Page;
 
 import java.util.List;
@@ -14,6 +12,7 @@ import java.util.Map;
 public interface StudentService {
 
     public Student checkStudentLogin(String id , String password);
+
 
     public List getList(Page page, String key);
     public int getCount(String key) ;
@@ -31,4 +30,11 @@ public interface StudentService {
     public List getMaxScore(Map<String ,Object> map);
 
     public int getMaxScoreCount(Map<String ,Object> map);
+
+    public StudentMaxScoreView getScoreByStudentId(String studentId,int questionId);
+
+    public List getSubmissionByStudentId(String studentId, Page page);
+
+    public int getSubmissionByStudentIdCount(String studentId);
+
 }

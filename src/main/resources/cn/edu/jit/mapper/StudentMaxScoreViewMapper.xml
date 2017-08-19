@@ -51,6 +51,12 @@
     </if>
   </select>
 
+
+  <select id="selectByStudentId" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT * from student_max_score_view
+    WHERE studentId = #{studentId} and questionId = #{questionId}
+  </select>
+
   <select id="selectCount" parameterType="java.util.Map" resultType="java.lang.Integer">
     SELECT count(*) from student_max_score_view
     <include refid="query"/>
