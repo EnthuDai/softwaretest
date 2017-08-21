@@ -30,6 +30,15 @@ Ext.define('SoftwareTest.view.admin.MenuTreeController', {
             }else{
                 Ext.getCmp('rqtsgrid').show();
             }
+        }else if(item.data.text==='统计分析'){
+            if(!Ext.getCmp('analysepage')){
+                Ext.getCmp('tabpage').add({
+                    xtype:'analysepage',
+                    title:'统计分析'
+                }).show();
+            }else{
+                Ext.getCmp('analysepage').show();
+            }
         }
     }
 });

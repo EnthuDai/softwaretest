@@ -48,6 +48,9 @@ Ext.define('SoftwareTest.view.admin.MenuTree',{
             children:[{
                 text:'分数查看',
                 leaf:true
+            },{
+                text:'统计分析',
+                leaf:true
             }]
         },
         listeners:{

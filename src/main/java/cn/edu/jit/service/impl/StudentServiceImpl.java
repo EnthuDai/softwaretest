@@ -148,5 +148,13 @@ public class StudentServiceImpl implements StudentService {
         return submissionQuestionMapper.selectSubmissionByStudentIdCount(studentId);
     }
 
+    @Override
+    public ScoreDistribution getScoreDistribution(int classId, int questionId) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("classId",classId);
+        map.put("questionId",questionId);
+        return studentMaxScoreViewMapper.selectScoreDistribution(map);
+    }
+
 
 }

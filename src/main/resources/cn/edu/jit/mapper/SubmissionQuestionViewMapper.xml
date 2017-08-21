@@ -75,9 +75,11 @@
     <select id="selectSubmissionByStudentId" resultMap="BaseResultMap" parameterType="java.util.Map">
       select * FROM submission_question_view
       WHERE studentId = #{studentId}
+      order by  submitTime desc
       <if test="start!=null and limit!=0">
         LIMIT #{start}, #{limit}
       </if>
+
     </select>
 
   <select id="selectSubmissionByStudentIdCount" resultType="java.lang.Integer" parameterType="java.lang.String">

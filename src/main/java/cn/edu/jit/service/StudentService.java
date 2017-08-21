@@ -37,4 +37,6 @@ public interface StudentService {
 
     public int getSubmissionByStudentIdCount(String studentId);
 
+    public ScoreDistribution getScoreDistribution(int classId,int questionId);
+
 }

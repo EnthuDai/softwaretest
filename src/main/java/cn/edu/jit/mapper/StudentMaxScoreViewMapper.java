@@ -1,5 +1,6 @@
 package cn.edu.jit.mapper;
 
+import cn.edu.jit.po.ScoreDistribution;
 import cn.edu.jit.po.StudentMaxScoreView;
 
 import java.util.List;
@@ -27,4 +28,7 @@ public interface StudentMaxScoreViewMapper {
     int selectCount(Map map);
 
     StudentMaxScoreView selectByStudentId(Map map);
+
+    ScoreDistribution selectScoreDistribution(Map map);
+
 }

@@ -1,9 +1,6 @@
 package cn.edu.jit.controller;
 
-import cn.edu.jit.po.Classes;
-import cn.edu.jit.po.Student;
-import cn.edu.jit.po.StudentMaxScoreView;
-import cn.edu.jit.po.StudentPoJo;
+import cn.edu.jit.po.*;
 import cn.edu.jit.service.StudentService;
 import cn.edu.jit.util.ExtSimpleResponse;
 import cn.edu.jit.util.Grid;
@@ -16,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -137,7 +136,20 @@ public class StudentController {
         grid.setData(studentService.getSubmissionByStudentId(studentId,page));
         grid.setTotal(studentService.getSubmissionByStudentIdCount(studentId));
         return grid;
+    }
 
+    @RequestMapping("getScoreDistribution.do")
+    public @ResponseBody
+    Grid getScoreDistribution(int classId, int questionId){
+        ScoreDistribution scoreDistribution = studentService.getScoreDistribution(classId, questionId);
+        List<ScoreDistributionPoJo> list = new ArrayList<>();
+        float count = scoreDistribution.getFcount();
+        list.add(new ScoreDistributionPoJo("60分以下",scoreDistribution.getAcount(),100*scoreDistribution.getAcount()/count));
+        list.add(new ScoreDistributionPoJo("60分-70分",scoreDistribution.getBcount(),100*scoreDistribution.getBcount()/count));
+        list.add(new ScoreDistributionPoJo("70分-80分",scoreDistribution.getCcount(),100*scoreDistribution.getCcount()/count));
+        list.add(new ScoreDistributionPoJo("80分-90分",scoreDistribution.getDcount(),100*scoreDistribution.getDcount()/count));
+        list.add(new ScoreDistributionPoJo("90分-100分",scoreDistribution.getEcount(),100*scoreDistribution.getEcount()/count));
+        return new Grid(list);
     }
 
 }

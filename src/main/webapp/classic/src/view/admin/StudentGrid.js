@@ -138,8 +138,8 @@ Ext.define('SoftwareTest.view.admin.StudentGrid', {
     columns: [
         {text: '学号', dataIndex: 'studentId', flex: 2},
         {text: '姓名', dataIndex: 'studentName', flex: 1},
-        {text: '班级名称', dataIndex: 'className', flex: 1},
-        {text: '答题数', dataIndex: 'number', flex: 1}
+        {text: '班级名称', dataIndex: 'className', flex: 1}
+
     ],
     selModel: {
         type: 'checkboxmodel',

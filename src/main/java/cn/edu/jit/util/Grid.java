@@ -13,6 +13,14 @@ public class Grid {
 	private int total;
 	@SuppressWarnings("rawtypes")
 	private List data;
+
+	public Grid(List data) {
+		this.data = data;
+	}
+
+	public Grid() {
+	}
+
 	public int getTotal() {
 		return total;
 	}

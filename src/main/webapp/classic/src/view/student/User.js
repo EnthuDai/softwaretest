@@ -27,21 +27,25 @@ Ext.define('SoftwareTest.view.student.User', {
             x:60,
             y:15,
             xtype:'label',
+            id:'user_name_label',
             html:'<font size="4px" color="grey">'+sessionStorage.getItem('studentName')+'</font>'
         },{
             x:10,
             y:55,
             xtype:'label',
+            id:'user_session_label',
             html:'<font size="2px" color="grey">'+sessionStorage.getItem('session')+'级</font>'
         },{
-            x:50,
+            x:60,
             y:55,
             xtype:'label',
+            id:'user_major_label',
             html:'<font size="2px" color="grey">'+sessionStorage.getItem("major")+'专业</font>'
         },{
-            x:150,
+            x:170,
             y:55,
             xtype:'label',
+            id:'user_className_label',
             html:'<font size="2px">'+sessionStorage.getItem("className")+'</font>'
         },{
             x:800,
@@ -162,6 +166,11 @@ Ext.define('SoftwareTest.view.student.User', {
 
     listeners:{
         beforerender:function(){
+            console.log('nei bu');
+            Ext.getCmp('user_name_label').setHtml('<font size="4px" color="grey">'+sessionStorage.getItem('studentName')+'</font>');
+            Ext.getCmp('user_session_label').setHtml('<font size="2px" color="grey">'+sessionStorage.getItem('session')+'级</font>');
+            Ext.getCmp('user_major_label').setHtml('<font size="2px" color="grey">'+sessionStorage.getItem('major')+'专业</font>');
+            Ext.getCmp('user_className_label').setHtml('<font size="2px" color="grey">'+sessionStorage.getItem('className')+'</font>');
             Ext.Ajax.request({
                 url:'student/getScoreById.do',
                 params:{

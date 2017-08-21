@@ -30,15 +30,17 @@ Ext.define('SoftwareTest.view.student.LoginWindowController', {
                                 sessionStorage.setItem('session',res2.session);
                                 sessionStorage.setItem('major',res2.major);
                                 sessionStorage.setItem('className',res2.className);
-                            }
-                        });
-                        Ext.getCmp('student-main').add({
-                            xtype:'user',
-                            title: '个人中心',
-                            iconCls: 'fa-user',
-                            layout:{
-                                type:'vbox',
-                                align:'center'
+                                console.log('session she zhi wan cheng');
+                                Ext.getCmp('student-main').add({
+                                    xtype:'user',
+                                    title: '个人中心',
+                                    iconCls: 'fa-user',
+                                    layout:{
+                                        type:'vbox',
+                                        align:'center'
+                                    }
+                                });
+                                console.log('tian jia wan ');
                             }
                         });
                     }

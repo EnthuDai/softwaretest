@@ -13,7 +13,7 @@ Ext.define('SoftwareTest.view.admin.score.RqtsGrid',{
         type: 'admin-score-rqtsgrid'
     },
 
-    id:'reqsgrid',
+    id:'rqtsgrid',
     closable:true,
     store:{
         type:'ScoreStore'
@@ -129,21 +129,6 @@ Ext.define('SoftwareTest.view.admin.score.RqtsGrid',{
             type: 'QuestionStore'
         },
         queryMode: 'local'
-    },{
-        xtype: 'button',
-        text: '添加',
-        iconCls: 'icon-add',
-        handler: 'add'
-    }, {
-        xtype: 'button',
-        text: '修改',
-        iconCls: 'icon-edit',
-        handler: 'edit'
-    }, {
-        xtype: 'button',
-        text: '删除',
-        iconCls: 'icon-remove',
-        handler: 'delete'
     }],
     dockedItems: [{
         xtype: 'pagingtoolbar',

@@ -13,7 +13,8 @@
      *      ]
      */
     "requires": [
-        "font-awesome"
+        "font-awesome",
+        "charts"
 //        "ext-locale"
     ],
 

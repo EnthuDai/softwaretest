@@ -5,7 +5,8 @@ Ext.define('SoftwareTest.view.student.SubmissionGrid',{
 
     requires: [
         'SoftwareTest.view.student.SubmissionGridController',
-        'SoftwareTest.view.student.SubmissionGridModel'
+        'SoftwareTest.view.student.SubmissionGridModel',
+        'SoftwareTest.store.StudentSubmissionStore'
     ],
 
     controller: 'student-submissiongrid',
@@ -15,6 +16,7 @@ Ext.define('SoftwareTest.view.student.SubmissionGrid',{
     store:{
         type:'StudentSubmissionStore'
     },
+    emptyText:'暂无数据',
     columns:[
         {text:'题目',dataIndex:'questiontitle',flex:1},
         {text:'得分',dataIndex:'score',flex:1},
