@@ -39,6 +39,15 @@ Ext.define('SoftwareTest.view.admin.MenuTreeController', {
             }else{
                 Ext.getCmp('analysepage').show();
             }
+        }else if(item.data.text==='服务器监控'){
+            if(!Ext.getCmp('systemmonitor')){
+                Ext.getCmp('tabpage').add({
+                    xtype:'systemmonitor',
+                    title:'服务器监控'
+                }).show();
+            }else{
+                Ext.getCmp('systemmonitor').show();
+            }
         }
     }
 });

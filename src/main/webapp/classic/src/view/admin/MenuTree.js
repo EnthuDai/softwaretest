@@ -56,5 +56,18 @@ Ext.define('SoftwareTest.view.admin.MenuTree',{
         listeners:{
             itemclick:'treeclick'
         }
+    },{
+        xtype:'treepanel',
+        title:'系统管理',
+        rootVisible:false,
+        root:{
+            children:[{
+                text:'服务器监控',
+                leaf:true
+            }]
+        },
+        listeners:{
+            itemclick:'treeclick'
+        }
     }]
 });

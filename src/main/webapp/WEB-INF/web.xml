@@ -14,6 +14,14 @@
     </param-value>
   </context-param>
 
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>softwareTest.root</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
+  </listener>
+
 
   <!-- 加载LOG4J -->
   <context-param>
@@ -26,11 +34,7 @@
     <param-value>60000</param-value>
   </context-param>
 
-  <!-- 动态设置项目的运行路径 -->
-  <context-param>
-    <param-name>webAppRootKey</param-name>
-    <param-value>ssm.root</param-value>
-  </context-param>
+
 
 
   <!-- spring框架提供的字符集过滤器 -->
