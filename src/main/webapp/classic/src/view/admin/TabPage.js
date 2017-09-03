@@ -5,7 +5,8 @@ Ext.define('SoftwareTest.view.admin.TabPage',{
 
     requires: [
         'SoftwareTest.view.admin.TabPageController',
-        'SoftwareTest.view.admin.TabPageModel'
+        'SoftwareTest.view.admin.TabPageModel',
+        'SoftwareTest.view.admin.ClassGrid'
     ],
 
     controller: 'admin-tabpage',
@@ -15,6 +16,7 @@ Ext.define('SoftwareTest.view.admin.TabPage',{
     id:'tabpage',
 
     items:[{
-        html:'hell'
+        xtype:'classgrid',
+        title:'班级列表'
     }]
 });

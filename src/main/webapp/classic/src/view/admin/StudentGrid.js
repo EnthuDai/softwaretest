@@ -12,6 +12,7 @@ Ext.define('SoftwareTest.view.admin.StudentGrid', {
         type: 'admin-studentgrid'
     },
 
+
     store: {
         type: 'StudentStore'
     },
