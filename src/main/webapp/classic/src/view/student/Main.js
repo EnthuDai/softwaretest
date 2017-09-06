@@ -8,7 +8,8 @@ Ext.define('SoftwareTest.view.student.Main',{
         'SoftwareTest.view.student.User',
         'SoftwareTest.view.student.MainModel',
         'SoftwareTest.view.student.QuestionController',
-        'SoftwareTest.view.student.Logic'
+        'SoftwareTest.view.student.Logic',
+        'Ext.plugin.Viewport'
     ],
     ui: 'navigation',
     id:'student-main',

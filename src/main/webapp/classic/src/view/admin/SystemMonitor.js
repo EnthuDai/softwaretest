@@ -12,6 +12,7 @@ Ext.define('SoftwareTest.view.admin.SystemMonitor', {
     },
 
     id: 'systemmonitor',
+    scrollable:true,
     closable: true,
     layout: {
         type: 'table',

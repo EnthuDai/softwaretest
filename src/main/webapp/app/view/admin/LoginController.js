@@ -12,7 +12,7 @@ Ext.define('SoftwareTest.view.admin.LoginController',{
                 if(res.success){
                     sessionStorage.setItem('adminLogin',true);
                     sessionStorage.setItem('adminId',form.getValues().name);
-                    window.location.href='/index.html?admin';
+                    window.location.href='index.html?admin';
                 }else{
                     Ext.Msg.alert('错误','账号或密码错误');
                 }

@@ -8,6 +8,7 @@ Ext.define('SoftwareTest.view.admin.chart.AnalysePage', {
 
     title: '统计分析',
     closable: true,
+    scrollable:true,
 
     id: 'analysepage',
     layout: {

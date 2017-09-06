@@ -15,11 +15,11 @@ Ext.define('SoftwareTest.view.student.QuestionController', {
             minWidth: 400
         });
     },
-    rqts_reset: function () {
+    rqts_reset: function (t) {
         Ext.getCmp('rqtsAnswer').setValue('');
     },
 
-    rqtsSubmit: function () {
+    rqtsSubmit: function (t) {
         if (!sessionStorage.isLogin || sessionStorage.isLogin === 'false') {
             this.showResultText('尚未登录，请先登录');
             Ext.create('SoftwareTest.view.student.LoginWindow').show();

@@ -14,8 +14,8 @@
      */
     "requires": [
         "font-awesome",
-        "charts"
-//        "ext-locale"
+        "charts",
+        "ext-locale"
     ],
 
     /**

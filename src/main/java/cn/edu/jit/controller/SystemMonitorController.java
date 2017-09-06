@@ -37,7 +37,6 @@ public class SystemMonitorController {
         long download = 0;
         try {
             if(netInterface == null)this.initInterfaceData(sigar);
-            System.out.println(netInterface);
             NetInterfaceData netIfData1 = NetInterfaceData.gather(sigar, netInterface);
             upload += netIfData1.getTxbps();
             download += netIfData1.getRxbps();

@@ -28,7 +28,7 @@ Ext.define('SoftwareTest.view.admin.Login',{
                 marginTop: '100px'
             },
             bodyStyle: {
-                background: 'url(/resources/pic/pic_4.png) no-repeat right top'
+                background: 'url(resources/pic/pic_4.png) no-repeat right top'
             }
         }, {
             xtype: 'panel',

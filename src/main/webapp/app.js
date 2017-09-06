@@ -12,7 +12,8 @@ Ext.application({
         'SoftwareTest.view.student.Main',
         'SoftwareTest.view.admin.Login',
         'SoftwareTest.view.admin.Main',
-        'SoftwareTest.store.ClassStore'
+        'SoftwareTest.store.ClassStore',
+        'Ext.plugin.Viewport'
     ],
 
     // The name of the initial view to create. With the classic toolkit this class
@@ -28,20 +29,17 @@ Ext.application({
     //-------------------------------------------------------------------------
 
     init:function(){
-        Ext.apply(SoftwareTest,{server :'/'});
+        Ext.apply(SoftwareTest,{server :''});
     },
     launch:function(){
         var me = this;
-        if(location.href.indexOf('admin') != -1){
-            if(sessionStorage.getItem("adminLogin")=='true')
+        if(location.href.indexOf('admin') !== -1){
+            if(sessionStorage.getItem("adminLogin")==='true')
                 me.setMainView('SoftwareTest.view.admin.Main');
             else
                 me.setMainView('SoftwareTest.view.admin.Login');
         }else{
             me.setMainView('SoftwareTest.view.student.Main');
         }
-    },
-    destroy:function () {
-        Ext.Msg.alert('','');
     }
 });

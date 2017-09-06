@@ -7,7 +7,7 @@ Ext.define('SoftwareTest.view.admin.chart.ScorePie', {
         'SoftwareTest.store.ZlqScoreDistributionStore',
         'SoftwareTest.store.LogicScoreDistributionStore'
     ],
-
+    width:1200,
     controller: 'pie',
     layout:{
         type:'hbox'
@@ -17,7 +17,7 @@ Ext.define('SoftwareTest.view.admin.chart.ScorePie', {
         id:'rqtspie',
         width:400,
         height:300,
-        reference: 'chart',
+        // reference: 'chart',
         // theme: 'default-gradients',
         insetPadding: 50,
         innerPadding: 20,
@@ -59,7 +59,7 @@ Ext.define('SoftwareTest.view.admin.chart.ScorePie', {
         id:'zlqpie',
         width:400,
         height:300,
-        reference: 'chart',
+        // reference: 'chart',
         // theme: 'default-gradients',
         insetPadding: 50,
         innerPadding: 20,
@@ -101,7 +101,7 @@ Ext.define('SoftwareTest.view.admin.chart.ScorePie', {
         id:'logicpie',
         width:400,
         height:300,
-        reference: 'chart',
+        // reference: 'chart',
         // theme: 'default-gradients',
         insetPadding: 50,
         innerPadding: 20,

@@ -78,7 +78,7 @@ Ext.define('SoftwareTest.view.student.LoginStatus',{
         xtype: 'component',
         autoEl: {
             tag: 'a',
-            href:'/index.html?admin',
+            href:'index.html?admin',
             html: '管理员登录'
         },
         listeners:{

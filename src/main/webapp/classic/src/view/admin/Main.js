@@ -4,7 +4,8 @@ Ext.define('SoftwareTest.view.admin.Main', {
 
     requires:['SoftwareTest.view.admin.AdminToolbar',
         'SoftwareTest.view.admin.MenuTree',
-        'SoftwareTest.view.admin.TabPage'],
+        'SoftwareTest.view.admin.TabPage',
+        'Ext.plugin.Viewport'],
 
     // ui: 'navigation',
 

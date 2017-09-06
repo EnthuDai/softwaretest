@@ -28,9 +28,9 @@ Ext.define('SoftwareTest.view.admin.AdminToolbar',{
             iconCls:'icon-quit',
             handler:function(){
                 Ext.Msg.confirm('提示','确定退出？',function (b) {
-                    if(b=='yes'){
+                    if(b==='yes'){
                         sessionStorage.setItem('adminLogin',false);
-                        window.location.href='/index.html?admin';
+                        window.location.href='index.html?admin';
                     }
                 });
             }

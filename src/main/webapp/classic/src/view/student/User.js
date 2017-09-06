@@ -6,6 +6,9 @@ Ext.define('SoftwareTest.view.student.User', {
 
     id:'user',
 
+    requires:[
+        'SoftwareTest.view.student.SubmissionGrid'
+    ],
     layout:{
         type:'vbox',
         align: 'center'
@@ -166,7 +169,6 @@ Ext.define('SoftwareTest.view.student.User', {
 
     listeners:{
         beforerender:function(){
-            console.log('nei bu');
             Ext.getCmp('user_name_label').setHtml('<font size="4px" color="grey">'+sessionStorage.getItem('studentName')+'</font>');
             Ext.getCmp('user_session_label').setHtml('<font size="2px" color="grey">'+sessionStorage.getItem('session')+'级</font>');
             Ext.getCmp('user_major_label').setHtml('<font size="2px" color="grey">'+sessionStorage.getItem('major')+'专业</font>');
