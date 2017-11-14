@@ -158,7 +158,7 @@ Ext.define('SoftwareTest.view.student.Logic',{
                 }]
             },{
                 xtype:'panel',
-                title:'路劲覆盖',
+                title:'路径覆盖',
                 items:[{
                     xtype:'textarea',
                     vtype:'logic',
