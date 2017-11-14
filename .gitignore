@@ -1,0 +1,9 @@
+
+/target/
+/src/main/webapp/build/
+/.idea/
+/src/main/resources/jdbc.properties
+/src/main/resources/mybatis-generator-config.xml
+/src/main/webapp/.sencha/
+/src/main/webapp/ext/
+/src/main/webapp/modern/
